@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EGAT Map Service with Sublayers</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.26/"></script>
+</head>
+<body>
+    <div id="viewDiv" style="height: 100vh;"></div>
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/MapImageLayer"
+        ], function(Map, MapView, MapImageLayer) {
+            // Your token
+            var token = "NVJ4B-2ylL5ptkAvHi7tn-uV_G661lSyG_BokjXD2Yuu39Fx5pQf3MvmymCDyo1r";
+
+            // Create a MapImageLayer for the entire service, then specify sublayers
+            var mapImageLayer = new MapImageLayer({
+                url: "https://gisportal.egat.co.th/sharedata/rest/services/EGAT/Treasury/MapServer",
+                sublayers: [
+                    {
+                        id: 1, // Specify the ID of the sublayer you want to add
+                        visible: true
+                    },
+                    {
+                        id: 5, // You can add multiple sublayers
+                        visible: true
+                    },
+                    {
+                        id: 0, // You can add multiple sublayers
+                        visible: true
+                    },
+                    {
+                        id: 2, // You can add multiple sublayers
+                        visible: true
+                    }
+                ],
+                // Append the token to the request
+                urlParameters: {
+                    token: token
+                }
+            });
+
+            // Create a Map and add the MapImageLayer with sublayers
+            var map = new Map({
+                basemap: "streets",
+                layers: [mapImageLayer]
+            });
+
+            // Create a MapView and set the map
+            var view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [100.52, 13.75], // Longitude, Latitude
+                zoom: 6
+            });
+        });
+    </script>
+</body>
+</html>

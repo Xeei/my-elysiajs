@@ -1,15 +1,22 @@
 {
-  "name": "app",
-  "version": "1.0.50",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
-  },
-  "dependencies": {
-    "elysia": "latest"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+    "name": "app",
+    "version": "1.0.50",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "bun run --watch src/index.ts",
+        "start": "bun run src/index.ts"
+    },
+    "dependencies": {
+        "@elysiajs/cron": "^1.1.0",
+        "@elysiajs/static": "^1.1.1",
+        "@elysiajs/stream": "^1.1.0",
+        "@elysiajs/swagger": "^1.1.1",
+        "elysia": "latest",
+        "three": "^0.169.0"
+    },
+    "devDependencies": {
+        "bun-types": "latest"
+    },
+    "module": "src/index.js",
+    "main": "src/index.ts"
 }
